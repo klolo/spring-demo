@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-demo
+  labels:
+    app: spring-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-demo
+  template:
+    metadata:
+      labels:
+        app: spring-demo
+    spec:
+      containers:
+        - name: spring-demo
+          image: spring-demo:1.0.0
+          imagePullPolicy: Never # for using local docker with minikube
+          ports:
+            - containerPort: 8080
